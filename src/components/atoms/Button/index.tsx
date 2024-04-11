@@ -33,8 +33,10 @@ export default Button;
 const styles = StyleSheet.create({
   container: backgroundColor => ({
     backgroundColor: backgroundColor,
+    marginLeft: 68,
+    marginRight: 68,
     paddingVertical: 12,
-    borderRadius: 8,
+    borderRadius: 15,
   }),
   label: textColor => ({
     textAlign: 'center',

@@ -1,6 +1,6 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React, {useEffect} from 'react';
-import Logo from '../../assets/icon/Logo.svg';
+import Logo from '../../assets/icon/third_logo-removebg 1.svg';
 
 const SplashScreen = ({navigation}) => {
   useEffect(() => {
@@ -10,7 +10,6 @@ const SplashScreen = ({navigation}) => {
   return (
     <View style={styles.container}>
       <Logo />
-      <Text style={styles.text}>Money Tracker</Text>
     </View>
   );
 };
@@ -19,13 +18,9 @@ export default SplashScreen;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#02CF8E',
+    backgroundColor: '#06D48A',
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  text: {
-    fontSize: 32,
-    fontFamily: 'Poppins-Medium',
   },
 });

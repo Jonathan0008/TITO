@@ -13,7 +13,7 @@ const PageHeader = ({label, backButton, onPress, Type}) => {
         </View>
         <View>
           <Image
-            source={require('C:/Users/ACER/Documents/MAD/MoneyTrackerMAD2024-parallel-C/src/assets/pprofil/image2.png')}
+            source={require('C:/Users/ACER/Documents/MAD/TITO-master/src/assets/pprofil/image2.png')}
             style={styles.image}
           />
         </View>
