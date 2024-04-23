@@ -25,7 +25,7 @@ const Home = ({navigation}) => {
       <ScrollView>
         <View style={styles.containNotif}>
           <Gap height={34} />
-          <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
+          <TouchableOpacity onPress={() => navigation.navigate('Notif')}>
             <Notif />
           </TouchableOpacity>
           <Gap height={28} />
