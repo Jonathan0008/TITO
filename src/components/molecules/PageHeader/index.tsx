@@ -11,12 +11,6 @@ const PageHeader = ({label, backButton, onPress, Type}) => {
           <Text style={styles.labelHome}>Money Tracker</Text>
           <Text style={styles.labelHome2}>Money Tracker</Text>
         </View>
-        <View>
-          <Image
-            source={require('C:/Users/ACER/Documents/MAD/TITO-master/src/assets/pprofil/image2.png')}
-            style={styles.image}
-          />
-        </View>
       </View>
     );
   }
