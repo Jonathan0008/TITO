@@ -4,4 +4,6 @@ import SignUp from './SignUp';
 import Home from './Home';
 import Search from './Search';
 import Notif from './Notif';
-export {SignIn, SplashScreen, SignUp, Home, Search, Notif};
+import Upload from './Upload';
+
+export {SignIn, SplashScreen, SignUp, Home, Search, Notif, Upload};

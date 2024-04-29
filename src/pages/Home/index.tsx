@@ -57,13 +57,13 @@ const Home = ({navigation}) => {
         </View>
       </ScrollView>
       <View style={styles.buttomPage}>
-        <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
+        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
           <BP1 style={styles.bp1} />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('Search')}>
           <BP2 style={styles.bp2} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
+        <TouchableOpacity onPress={() => navigation.navigate('Upload')}>
           <BP3 style={styles.bp3} />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
