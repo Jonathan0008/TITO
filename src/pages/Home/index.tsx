@@ -66,10 +66,10 @@ const Home = ({navigation}) => {
         <TouchableOpacity onPress={() => navigation.navigate('Upload')}>
           <BP3 style={styles.bp3} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
+        <TouchableOpacity onPress={() => navigation.navigate('Status')}>
           <BP4 style={styles.bp4} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
+        <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
           <BP5 style={styles.bp5} />
         </TouchableOpacity>
       </View>

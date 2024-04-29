@@ -1,6 +1,6 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {SplashScreen, SignIn, SignUp, Home, Search, Notif, Upload} from '../pages';
+import {SplashScreen, SignIn, SignUp, Home, Search, Notif, Upload, Status, Profile, EditProfile} from '../pages';
 
 const Stack = createNativeStackNavigator();
 
@@ -40,6 +40,21 @@ const index = () => {
       <Stack.Screen
         name="Upload"
         component={Upload}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Status"
+        component={Status}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Profile"
+        component={Profile}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="EditProfile"
+        component={EditProfile}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
