@@ -47,7 +47,8 @@ const Home = ({navigation}) => {
           <Gap height={35} />
           <Text style={styles.text3}>Kategori</Text>
           <Gap height={15} />
-          <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('OrganicRecycle')}>
             <B4 />
           </TouchableOpacity>
           <Gap height={20} />

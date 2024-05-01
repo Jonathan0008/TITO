@@ -8,8 +8,10 @@ import Upload from './Upload';
 import Profile from './Profile';
 import EditProfile from './EditProfile';
 import Status from './Status';
+import OrganicRecycle from './OrganicRecycle';
 
 export {
+  OrganicRecycle,
   SignIn,
   SplashScreen,
   SignUp,
