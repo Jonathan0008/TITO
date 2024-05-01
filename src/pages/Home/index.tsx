@@ -52,7 +52,8 @@ const Home = ({navigation}) => {
             <B4 />
           </TouchableOpacity>
           <Gap height={20} />
-          <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('PlasticRecycle')}>
             <B5 />
           </TouchableOpacity>
         </View>

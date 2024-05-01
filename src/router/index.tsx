@@ -12,6 +12,7 @@ import {
   Profile,
   EditProfile,
   OrganicRecycle,
+  PlasticRecycle,
 } from '../pages';
 
 const Stack = createNativeStackNavigator();
@@ -72,6 +73,11 @@ const index = () => {
       <Stack.Screen
         name="OrganicRecycle"
         component={OrganicRecycle}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="PlasticRecycle"
+        component={PlasticRecycle}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
