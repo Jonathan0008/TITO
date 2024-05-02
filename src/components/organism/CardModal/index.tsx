@@ -8,13 +8,19 @@ import {
 } from 'react-native';
 import {ProfileIcon, Recycle} from '../../../assets/icon';
 import {Waste3} from '../../../assets/images';
+import {NavigationProp} from '@react-navigation/native';
 
 type TCard = {
   visible: boolean;
   handleClose: () => void;
+  navigation: NavigationProp<any>;
 };
 
-const CardModal = ({visible, handleClose}: TCard) => {
+const CardModal = ({visible, handleClose, navigation}: TCard) => {
+  const handleApprove = () => {
+    handleClose();
+    navigation.navigate('OrganicApproved');
+  };
   return (
     <Modal visible={visible} animationType="slide" transparent={true}>
       <View style={styles.modalBg}>
@@ -76,8 +82,9 @@ const CardModal = ({visible, handleClose}: TCard) => {
                 <Text style={styles.buttonText}>TIDAK</Text>
               </TouchableOpacity>
               <TouchableOpacity
+                onPress={handleApprove}
                 style={[styles.buttonContainer, {backgroundColor: '#12FC48'}]}>
-                <Text style={styles.buttonText}>Ya</Text>
+                <Text style={styles.buttonText}>YA</Text>
               </TouchableOpacity>
             </View>
           </View>

@@ -9,9 +9,11 @@ import Profile from './Profile';
 import EditProfile from './EditProfile';
 import Status from './Status';
 import OrganicRecycle from './OrganicRecycle';
+import OrganicApproved from './OrganicApproved';
 import PlasticRecycle from './PlasticRecycle';
 
 export {
+  OrganicApproved,
   PlasticRecycle,
   OrganicRecycle,
   SignIn,

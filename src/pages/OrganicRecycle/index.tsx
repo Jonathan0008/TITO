@@ -100,7 +100,11 @@ const OrganicRecycle = ({
           </Shadow>
         </ScrollView>
       </View>
-      <CardModal visible={modal} handleClose={() => setModal(!modal)} />
+      <CardModal
+        visible={modal}
+        handleClose={() => setModal(!modal)}
+        navigation={navigation}
+      />
     </>
   );
 };
