@@ -1,46 +1,76 @@
 import React from 'react';
 import {
-  ScrollView,
   StyleSheet,
   View,
-  Text,
   TouchableOpacity,
-  TextInput as TxInput
+  TextInput,
+  Text,
+  Image,
+  ScrollView,
 } from 'react-native';
-import {Gap} from '../../components';
-import BACK from '../../assets/icon/ion_chevron-back.svg';
-import SRC from '../../assets/icon/material-symbols-light_search.svg';
-import BP1 from '../../assets/icon/material-symbols_home-outline-rounded.svg';
-import BP2 from '../../assets/icon/icon _search outline_.svg';
-import BP3 from '../../assets/icon/zondicons_add-outline.svg';
-import BP4 from '../../assets/icon/octicon_checklist-24.svg';
-import BP5 from '../../assets/icon/lucide_user-round.svg';
+import {BackButton, SearchIcon} from '../../assets/icon';
+import {NavigationProp} from '@react-navigation/native';
+import {Waste1, Waste7, Waste8} from '../../assets/images';
+import {Shadow} from 'react-native-shadow-2';
 
-const Search = ({navigation}) => {
+type SearchProps = {
+  navigation: NavigationProp<any>;
+};
+
+const Search = ({navigation}: SearchProps) => {
+  const handleGoBack = () => {
+    navigation.goBack();
+  };
   return (
     <View style={styles.container}>
-      <View style={styles.containSearch}>
-        <BACK style={styles.Back} />
-        <TxInput style={styles.containSrc} />
-        <SRC style={styles.SRC} />
+      <View style={styles.header}>
+        <TouchableOpacity onPress={handleGoBack} activeOpacity={0.4}>
+          <BackButton />
+        </TouchableOpacity>
+        <View style={styles.searchContainer}>
+          <TextInput style={styles.input} />
+          <SearchIcon />
+        </View>
       </View>
-      <View style={styles.buttomPage}>
-        <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
-          <BP1 style={styles.bp1} />
+
+      <View style={styles.buttonGroup}>
+        <TouchableOpacity activeOpacity={0.8} style={styles.button}>
+          <Text style={styles.buttonText}>ORGANIC</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
-          <BP2 style={styles.bp2} />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
-          <BP3 style={styles.bp3} />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
-          <BP4 style={styles.bp4} />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
-          <BP5 style={styles.bp5} />
+        <TouchableOpacity activeOpacity={0.8} style={styles.button}>
+          <Text style={styles.buttonText}>PLASTIC</Text>
         </TouchableOpacity>
       </View>
+
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <View style={styles.listContainer}>
+          <Shadow>
+            <Image source={Waste1} style={styles.image} />
+          </Shadow>
+          <Text style={styles.description} numberOfLines={8}>
+            Ini adalah kolom caption bagi pengguna untuk memberikan informasi
+            mengenai barang yang ditampilkan.
+          </Text>
+        </View>
+        <View style={styles.listContainer}>
+          <Shadow>
+            <Image source={Waste7} style={styles.image} />
+          </Shadow>
+          <Text style={styles.description} numberOfLines={8}>
+            Ini adalah kolom caption bagi pengguna untuk memberikan informasi
+            mengenai barang yang ditampilkan.
+          </Text>
+        </View>
+        <View style={styles.listContainer}>
+          <Shadow>
+            <Image source={Waste8} style={styles.image} />
+          </Shadow>
+          <Text style={styles.description} numberOfLines={8}>
+            Ini adalah kolom caption bagi pengguna untuk memberikan informasi
+            mengenai barang yang ditampilkan.
+          </Text>
+        </View>
+      </ScrollView>
     </View>
   );
 };
@@ -50,62 +80,66 @@ export default Search;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
+    paddingVertical: 20,
   },
-  containSearch: {
+  header: {
     flexDirection: 'row',
-    backgroundColor: '#FFFFFF',
+    paddingHorizontal: 20,
+    columnGap: 8,
+    alignItems: 'center',
   },
-  containPage: {
-    backgroundColor: '#FFFFFF',
-    paddingLeft: 28,
-    paddingRight: 120,
-  },
-  containSrc: {
-    borderColor: '#000000',
-    borderWidth: 1,
-    borderRadius: 10,
-    marginLeft: 20,
-    marginRight: 10,
-    marginTop: 42,
-    marginBottom: 17,
-    paddingRight: 31,
-  },
-  Back: {
-    marginLeft: 17,
-    marginTop: 55,
-  },
-  SRC: {
-    marginLeft: 10,
-    marginTop: 55,
-  },
-  buttomPage: {
-    paddingHorizontal: 28,
-    paddingVertical: 7,
+  searchContainer: {
+    paddingHorizontal: 10,
+    alignItems: 'center',
     flexDirection: 'row',
-    backgroundColor: '#06D48A',
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
+    flexGrow: 1,
+    borderRadius: 15,
+    backgroundColor: 'white',
+
+    // shadow
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 8,
+    },
+    shadowOpacity: 0.44,
+    shadowRadius: 10.32,
+
+    elevation: 16,
   },
-  bp1: {
-    marginTop: 5,
-    marginHorizontal: 20,
+  input: {width: 275, color: 'black'},
+  buttonGroup: {
+    flexDirection: 'row',
+    paddingHorizontal: 20,
+    columnGap: 10,
+    marginTop: 20,
   },
-  bp2: {
-    marginTop: 5,
-    marginHorizontal: 20,
+  button: {
+    backgroundColor: '#D5F5EA',
+    paddingHorizontal: 15,
+    paddingVertical: 8,
+    borderRadius: 20,
   },
-  bp3: {
-    marginHorizontal: 20,
+  buttonText: {color: 'black', fontSize: 13},
+  scrollContainer: {
+    flex: 1,
+    marginTop: 40,
+    paddingTop: 20,
+    rowGap: 25,
+    paddingHorizontal: 20,
   },
-  bp4: {
-    marginTop: 5,
-    marginHorizontal: 20,
+  listContainer: {
+    backgroundColor: '#D5F5EA',
+    flexDirection: 'row',
+    columnGap: 10,
+    borderRadius: 20,
   },
-  bp5: {
-    marginTop: 5,
-    marginHorizontal: 20,
+  image: {width: 135, height: 135, borderRadius: 20, objectFit: 'cover'},
+  description: {
+    color: 'black',
+    flex: 1,
+    fontSize: 12,
+    fontWeight: 'bold',
+    paddingVertical: 10,
   },
 });

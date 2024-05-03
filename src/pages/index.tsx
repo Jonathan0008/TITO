@@ -11,8 +11,10 @@ import Status from './Status';
 import OrganicRecycle from './OrganicRecycle';
 import OrganicApproved from './OrganicApproved';
 import PlasticRecycle from './PlasticRecycle';
+import Add from './Add';
 
 export {
+  Add,
   OrganicApproved,
   PlasticRecycle,
   OrganicRecycle,
