@@ -65,7 +65,7 @@ const Home = ({navigation}) => {
         <TouchableOpacity onPress={() => navigation.navigate('Search')}>
           <BP2 style={styles.bp2} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('Upload')}>
+        <TouchableOpacity onPress={() => navigation.navigate('Add')}>
           <BP3 style={styles.bp3} />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('Status')}>

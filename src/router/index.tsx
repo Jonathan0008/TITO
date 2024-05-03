@@ -14,6 +14,7 @@ import {
   OrganicRecycle,
   PlasticRecycle,
   OrganicApproved,
+  Add,
 } from '../pages';
 
 const Stack = createNativeStackNavigator();
@@ -86,6 +87,7 @@ const index = () => {
         component={OrganicApproved}
         options={{headerShown: false}}
       />
+      <Stack.Screen name="Add" component={Add} options={{headerShown: false}} />
     </Stack.Navigator>
   );
 };
