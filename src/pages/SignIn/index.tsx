@@ -1,9 +1,39 @@
-import React from 'react';
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { Button, Gap, PageHeader, TextInput } from '../../components';
+import React, {useEffect, useState} from 'react';
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import {Button, Gap, PageHeader, TextInput} from '../../components';
 import Logo from '../../assets/icon/Google-Logo--Streamline-Logos.svg';
+import auth from '@react-native-firebase/auth';
 
-const SignIn = ({ navigation }) => {
+const SignIn = ({navigation}) => {
+  const [form, setForm] = useState({
+    email: '',
+    password: '',
+  });
+
+  const handleChange = (target: string, value: string) => {
+    setForm(prev => ({
+      ...prev,
+      [target]: value,
+    }));
+  };
+
+  const handleSignIn = async () => {
+    try {
+      await auth().signInWithEmailAndPassword(form.email, form.password);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    console.log(form);
+  }, [form]);
   return (
     <ScrollView style={styles.container}>
       <Gap height={167} />
@@ -13,14 +43,22 @@ const SignIn = ({ navigation }) => {
         Jaga dan cintai lingkungan bersama TITO sahabat peduli lingkungan!
       </Text>
       <Gap height={71} />
-      <TextInput placeholder="Email" label={undefined} />
+      <TextInput
+        placeholder="Email"
+        label=""
+        onChangeText={text => handleChange('email', text)}
+      />
       <Gap height={21} />
-      <TextInput placeholder="Password" label={undefined} />
+      <TextInput
+        placeholder="Password"
+        label=""
+        onChangeText={text => handleChange('password', text)}
+      />
       <Gap height={66} />
       <Button
         textColor="#FFFFFF"
         label="Masuk"
-        onSubmit={() => navigation.navigate('Home')}
+        onSubmit={handleSignIn}
         type={undefined}
         icon={undefined}
       />

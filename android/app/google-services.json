@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "233375014018",
+    "project_id": "tito-mobile-230e7",
+    "storage_bucket": "tito-mobile-230e7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:233375014018:android:f7832cc20445e3a44b289b",
+        "android_client_info": {
+          "package_name": "com.moneytrackermad2024"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwRcxSOnnSAgbr-Z8-80N-hS8uSYNzqrE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

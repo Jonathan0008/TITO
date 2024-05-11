@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   ScrollView,
   StyleSheet,
@@ -9,8 +8,53 @@ import {
 import {Button, Gap, PageHeader, TextInput} from '../../components';
 import LogoCamera from '../../assets/icon/camera.svg';
 import Logo from '../../assets/icon/Google-Logo--Streamline-Logos.svg';
+import {NavigationProp} from '@react-navigation/native';
+import {useEffect, useState} from 'react';
+import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 
-const SignUp = ({navigation}) => {
+const SignUp = ({navigation}: {navigation: NavigationProp<any, any>}) => {
+  const [form, setForm] = useState({
+    username: '',
+    email: '',
+    password: '',
+    phoneNumber: '',
+  });
+
+  const handleChange = (target: string, value: string) => {
+    setForm(prev => ({
+      ...prev,
+      [target]: value,
+    }));
+  };
+
+  const handleRegister = async () => {
+    try {
+      const credential = await auth().createUserWithEmailAndPassword(
+        form.email,
+        form.password,
+      );
+      const userPayload = {
+        displayName: credential.additionalUserInfo?.username ?? '',
+        email: credential.user.email ?? '',
+        phoneNumber: form.phoneNumber ?? '',
+        photoURL: credential.user.photoURL ?? '',
+        uid: credential.user.uid ?? '',
+      };
+      await firestore()
+        .collection('user')
+        .doc(credential.user.uid)
+        .set(userPayload);
+      navigation.navigate('SignIn');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    console.log(form);
+  }, [form]);
+
   return (
     <ScrollView style={styles.contentWrapper}>
       <Gap height={70} />
@@ -30,18 +74,34 @@ const SignUp = ({navigation}) => {
         Jaga dan cintai lingkungan bersama TITO sahabat peduli lingkungan!
       </Text>
       <Gap height={45} />
-      <TextInput placeholder="Username" label={undefined} />
+      <TextInput
+        placeholder="Username"
+        label=""
+        onChangeText={text => handleChange('username', text)}
+      />
       <Gap height={13} />
-      <TextInput placeholder="Email" label={undefined} />
+      <TextInput
+        placeholder="Email"
+        label={''}
+        onChangeText={text => handleChange('email', text)}
+      />
       <Gap height={13} />
-      <TextInput placeholder="Password" label={undefined} />
+      <TextInput
+        placeholder="Password"
+        label={''}
+        onChangeText={text => handleChange('password', text)}
+      />
       <Gap height={13} />
-      <TextInput placeholder="Nomor HP" label={undefined} />
+      <TextInput
+        placeholder="Nomor HP"
+        label={''}
+        onChangeText={text => handleChange('phoneNumber', text)}
+      />
       <Gap height={43} />
       <Button
         label="Daftar"
         textColor="#FFFFFF"
-        onSubmit={() => navigation.navigate('SignIn')}
+        onSubmit={handleRegister}
         type={undefined}
         icon={undefined}
       />

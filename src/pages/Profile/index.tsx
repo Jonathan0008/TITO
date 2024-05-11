@@ -1,13 +1,18 @@
 import {NavigationProp} from '@react-navigation/native';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {BackButton, EditIcon, LogoutIcon} from '../../assets/icon';
+import auth from '@react-native-firebase/auth';
 
 const Profile = ({navigation}: {navigation: NavigationProp<any, any>}) => {
   const handleGoBack = () => {
     navigation.goBack();
   };
-  const handleLogout = () => {
-    navigation.navigate('SignIn');
+  const handleLogout = async () => {
+    try {
+      await auth().signOut();
+    } catch (error) {
+      console.log(error);
+    }
   };
   const handleEditProfile = () => {
     navigation.navigate('EditProfile');
