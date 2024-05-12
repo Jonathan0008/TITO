@@ -9,17 +9,25 @@ import {
 import {ProfileIcon, Recycle} from '../../../assets/icon';
 import {Waste3} from '../../../assets/images';
 import {NavigationProp} from '@react-navigation/native';
+import firestore from '@react-native-firebase/firestore';
 
 type TCard = {
   visible: boolean;
   handleClose: () => void;
   navigation: NavigationProp<any>;
+  item: any;
 };
 
-const CardModal = ({visible, handleClose, navigation}: TCard) => {
-  const handleApprove = () => {
-    handleClose();
-    navigation.navigate('OrganicApproved');
+const CardModal = ({visible, handleClose, navigation, item}: TCard) => {
+  const handleApprove = async () => {
+    try {
+      await firestore().collection('sampah').doc(item.id).update({
+        status: true,
+      });
+      handleClose();
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <Modal visible={visible} animationType="slide" transparent={true}>
@@ -30,43 +38,38 @@ const CardModal = ({visible, handleClose, navigation}: TCard) => {
               <View style={styles.cardProfile}>
                 <ProfileIcon width={25} height={25} />
                 <View>
-                  <Text style={styles.usernameText}>Username</Text>
-                  <Text style={styles.locationText}>Location</Text>
+                  <Text style={styles.usernameText}>{item?.user.email}</Text>
+                  <Text style={styles.locationText}>{item?.lokasi}</Text>
                 </View>
               </View>
               <Text style={{color: 'black', fontSize: 11, fontWeight: 'bold'}}>
-                Tanggal Upload
+                {item?.tanggalUpload.toDate().toDateString()}
               </Text>
             </View>
 
             <Image
-              source={Waste3}
+              source={{uri: item?.gambar}}
               style={{height: 257, width: '100%', objectFit: 'cover'}}
             />
 
-            <Text style={styles.cardFooterText}>
-              Ini adalah kolom caption bagi pengguna untuk memberikan informasi
-              mengenai barang yang ditampilkan.
-            </Text>
+            <Text style={styles.cardFooterText}>{item?.keterangan}</Text>
           </View>
 
           <View style={{paddingHorizontal: 20}}>
             <View style={{flexDirection: 'row'}}>
-              <Text style={styles.detailLabel}>KETERANGAN</Text>
+              <Text style={styles.detailLabel}>KATEGORI</Text>
               <Text style={styles.detailDivider}>:</Text>
-              <Text style={styles.detailValue}>KULIT BUAH BUAHAN</Text>
+              <Text style={styles.detailValue}>{item?.kategori}</Text>
             </View>
             <View style={{flexDirection: 'row'}}>
               <Text style={styles.detailLabel}>No Telp</Text>
               <Text style={styles.detailDivider}>:</Text>
-              <Text style={styles.detailValue}>08123456789</Text>
+              <Text style={styles.detailValue}>{item?.noTelp}</Text>
             </View>
             <View style={{flexDirection: 'row'}}>
               <Text style={styles.detailLabel}>LOKASI</Text>
               <Text style={styles.detailDivider}>:</Text>
-              <Text style={styles.detailValue}>
-                JL. UNKLAB, ARIMADIDI, MINAHASA UTARA
-              </Text>
+              <Text style={styles.detailValue}>{item?.lokasi}</Text>
             </View>
           </View>
 
